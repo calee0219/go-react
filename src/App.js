@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {ChannelList, ChannelForm} from './Channel';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      channels: [
+        {name: 'Hardware Support'},
+        {name: 'Software Support'},
+        {name: 'ToolMan Support'}
+      ]
+    }
+  }
+  addChannel(name) {
+    let {channels} = this.state;
+    channels.push({name: name});
+    this.setState({
+      channels: channels
+    });
+  }
   render() {
     return (
       <div className="App">
@@ -10,9 +28,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+          <ChannelList channels={this.state.channels}/>
+          <ChannelForm addChannel={this.addChannel.bind(this)}/>
       </div>
     );
   }
