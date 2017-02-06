@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {ChannelList, ChannelForm} from './Channel';
+import {ChannelSection} from './channels/ChannelSection';
 
 class App extends Component {
   constructor(props) {
@@ -28,8 +28,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-          <ChannelList channels={this.state.channels}/>
-          <ChannelForm addChannel={this.addChannel.bind(this)}/>
+        <ChannelSection />
       </div>
     );
   }
